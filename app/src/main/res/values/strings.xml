@@ -3,4 +3,14 @@
     <string name="titre">Titre</string>
     <string name="subtitle">SubTitle</string>
     <string name="todo">TODO</string>
+        <string name="pseudo">Pseudo</string>
+        <string name="ok">OK</string>
+        <string name="newList">Nouvelle Liste</string>
+        <string name="newItem">Nouvel Item</string>
+        <string name="preferences">Préférences</string>
+        <string name="removePseudo">Supprimer tous les profils enregistrés</string>
+        <string name="listAlreadyExist">Cette liste existe déjà.</string>
+        <string name="itemAlreadyExist">Cet item existe déjà.</string>
+        <string name="pseudoDeleted">Les profils existants ont été supprimés.</string>
+
 </resources>

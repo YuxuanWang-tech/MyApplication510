@@ -10,10 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 class ItemAdapter(private val actionListener: ItemAdapter.ActionListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
-        private val dataSet : MutableList<ItemToDo> = mutableListOf()
+        private val dataSet : MutableList<ItemList> = mutableListOf()
 
 
-        fun setData(newDataSet : List<ItemToDo>?) {
+        fun setData(newDataSet: String) {
             dataSet.clear()
             if (newDataSet != null) {
                 dataSet.addAll(newDataSet)
@@ -35,11 +35,11 @@ class ItemAdapter(private val actionListener: ItemAdapter.ActionListener) : Recy
         }
 
         inner class ItemViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
-            private val descItem : CheckBox = itemView.findViewById(R.id.descItem)
+            private val CBitem : CheckBox = itemView.findViewById(R.id.CBitem)
 
             init {
                 val checkItemView : CheckBox = (itemView as ViewGroup).getChildAt(0) as CheckBox
-                checkItemView.setOnCheckedChangeListener { compoundButton: CompoundButton, b: Boolean ->
+                checkItemView.setOnCheckedChangeListener { cButton: CompoundButton, b: Boolean ->
                     val listPosition = adapterPosition
                     if (listPosition != RecyclerView.NO_POSITION) {
                         val clickedList = dataSet[listPosition]
@@ -52,7 +52,7 @@ class ItemAdapter(private val actionListener: ItemAdapter.ActionListener) : Recy
                 }
             }
 
-            fun bind(itemToDo : ItemToDo) {
+            fun bind(itemToDo : ItemList) {
                 CBitem.text = itemToDo.description
                 CBitem.isChecked = itemToDo.fait
             }
@@ -60,9 +60,9 @@ class ItemAdapter(private val actionListener: ItemAdapter.ActionListener) : Recy
 
 
         interface ActionListener {
-            fun onItemClicked(itemToDo : ItemToDo, value : Boolean)
+            fun onItemClicked(itemToDo : ItemList, value : Boolean)
         }
+
 
     }
 
-}

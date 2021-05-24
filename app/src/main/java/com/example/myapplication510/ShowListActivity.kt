@@ -6,20 +6,16 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
-import androidx.preference.PreferenceManager
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.appcompat.app.AppCompatActivity
-import com.google.gson.GsonBuilder
-import com.google.gson.annotations.SerializedName
 import kotlinx.coroutines.*
-import java.io.File
 
 class ShowListActivity : AppCompatActivity(), ItemAdapter.ActionListener, View.OnClickListener {
     private val activityScope = CoroutineScope(
@@ -62,7 +58,7 @@ class ShowListActivity : AppCompatActivity(), ItemAdapter.ActionListener, View.O
         ItemList.adapter = adapter
         ItemList.layoutManager = LinearLayoutManager(this)
         val dataSet: String = itemList!!.description
-        adapter!!.setData(dataSet)
+        //adapter!!.setData(newDataSet)
     }
 
     private fun newAdapter(): ItemAdapter = ItemAdapter(actionListener = this)
@@ -82,7 +78,7 @@ class ShowListActivity : AppCompatActivity(), ItemAdapter.ActionListener, View.O
      */
 
 
-    override fun onItemClicked(itemList: ItemList, value : Boolean) {
+    override fun onItemClicked(itemList: ItemList, value: Boolean) {
         val sharedPreference = getSharedPreferences("Setting", Context.MODE_PRIVATE)
 
     }
@@ -95,43 +91,25 @@ class ShowListActivity : AppCompatActivity(), ItemAdapter.ActionListener, View.O
             R.id.BtnShowList -> {
                 val descItem = ListInput!!.text.toString()
                 // Check if an item with the same description doesn't already exists
-                    // Update list
-                    // Serialize the new list of players
-                    /// Update the file
+                // Update list
+                // Serialize the new list of players
+                /// Update the file
 
             }
         }
     }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         //val inflater: MenuInflater = menuInflater
         //inflater.inflate(R.menu.main, menu)
         return true
 
     }
-
+    // Handle item selection
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle item selection
-        return when (item.itemId) {
-            //un menu “setting” dans toutes les activités, qui fera venir à l’activité de setting
-            R.id.action_settings -> {
-                val intentToSetting: Intent = Intent(this@ShowListActivity,SettingsActivity::class.java)
-                startActivity(intentToSetting)
-                true
-            }
-            //un menu “déconnexion” dans toutes les activités, qui fera revenir à l’activité de connexion
-            R.id.action_logout -> {
-                val t = Toast.makeText(this, "You have been logout", Toast.LENGTH_SHORT)
-                t.show()
-                val sharedPreference = getSharedPreferences("Setting", Context.MODE_PRIVATE)
-                var editor = sharedPreference.edit()
-                editor.remove("pseudo")
-                editor.commit()
-                val intentToConnection: Intent = Intent(this@ShowListActivity,MainActivity::class.java)
-                startActivity(intentToConnection)
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
+        return true
     }
+
+
 
 }

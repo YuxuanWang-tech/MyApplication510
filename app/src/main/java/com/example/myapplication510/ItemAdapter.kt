@@ -13,7 +13,7 @@ class ItemAdapter(private val actionListener: ItemAdapter.ActionListener) : Recy
         private val dataSet : MutableList<ItemList> = mutableListOf()
 
 
-        fun setData(newDataSet: String) {
+        fun setData(newDataSet: List<ItemList>?) {
             dataSet.clear()
             if (newDataSet != null) {
                 dataSet.addAll(newDataSet)
@@ -25,7 +25,7 @@ class ItemAdapter(private val actionListener: ItemAdapter.ActionListener) : Recy
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
             val inflater = LayoutInflater.from(parent.context)
-            val itemView = inflater.inflate(R.layout.item, parent, false)
+            val itemView = inflater.inflate(R.layout.item2, parent, false)
 
             return ItemViewHolder(itemView)
         }

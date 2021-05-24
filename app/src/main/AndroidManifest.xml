@@ -18,11 +18,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ChoixListActivity" >
+        <activity android:name=".ChoixListActivity" >
         </activity>
-        <activity android:name=".activity.SettingsActivity" >
+        <activity android:name=".SettingsActivity" >
         </activity>
-        <activity android:name=".activity.ShowListActivity" >
+        <activity android:name=".ShowListActivity" >
+        </activity>
+
     </application>
 
 </manifest>
